@@ -1,0 +1,16 @@
+package org.geomvd.mvdgeo.controllers.auth;
+
+import org.geomvd.mvdgeo.config.WebSecurityConfig;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class RegistrationController {
+
+    @GetMapping("/registration")
+    public String registration(){
+        if (!WebSecurityConfig.isAuthenticated())
+            return "auth/registration";
+        else return "redirect:/";
+    }
+}
