@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
     <link media="all" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
-    <link media="all" rel="stylesheet" type="text/css" href="/styles/auth/login_style.css"
-          th:href="@{/styles/auth/login_style.css}"/>
+    <link media="all" rel="stylesheet" type="text/css" href="/static/styles/auth/login_style.css" th:href="@{/styles/auth/login_style.css}"/>
+<!--    <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>-->
 
     <title>Авторизация</title>
 </head>
@@ -20,16 +20,12 @@
                     <h2 class="mb-3 font-weight-light">Авторизация</h2>
                     <form class="mt-3" name="login" th:action="@{/login}" method="post">
                         <fieldset>
-                            <div th:if="${param.error}" class="alert alert-error">
-                                Неправильные имя или пароль.
-                            </div>
-                            <div th:if="${param.logout}" class="alert alert-warning">
-                                Вы вышли из аккаунта.
-                            </div>
+                            <div th:if="${param.error}" class="alert alert-danger">Неправильные имя или пароль. </div>
+                            <div th:if="${param.logout}" class="alert alert-warning"> Вы вышли из аккаунта. </div>
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="form-group">
-<!--                                        <input class="form-control" type="email" placeholder="E-Mail" required pattern="^([a-zA-Z0-9_\-\.]+)@[m][v][d][.][r][u]" title="login@mvd.ru">-->
+                                        <!--                                        <input class="form-control" type="email" placeholder="E-Mail" required pattern="^([a-zA-Z0-9_\-\.]+)@[m][v][d][.][r][u]" title="login@mvd.ru">-->
                                         <input class="form-control" type="text" name="username" placeholder="Логин (как в ИСОД)" required>
                                     </div>
                                 </div>

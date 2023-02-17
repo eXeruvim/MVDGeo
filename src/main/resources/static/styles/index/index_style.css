@@ -1,0 +1,57 @@
+.container-fluid {
+    display: flex;
+    width: auto;
+}
+
+.navbar-nav li{
+    padding-right: 40px;
+}
+
+.nav-link {
+    font-size: 1.1em !important;
+}
+
+.form-main input:hover{
+    border: none;
+    background: transparent;
+    color: black;
+}
+
+.form-main input{
+    border: none;
+    background: transparent;
+    color: gray;
+}
+
+.form-main-active:hover{
+    border: none;
+    background: transparent;
+    color: black;
+}
+
+.form-main-active input{
+    border: none;
+    background: transparent;
+    color: black;
+}
+
+.form-main .logout:hover{
+    border: none;
+    background: transparent;
+    color: red;
+}
+.form-main .logout{
+    border: none;
+    background: transparent;
+    color: gray;
+}
+
+input{
+    font-size: 1.1em !important;
+    height: auto;
+    padding: 8px 0;
+}
+
+h1{
+    margin: auto;
+}

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <link media="all" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="/static/js/buttons.js" th:href="@{/js/buttons.js}"></script>
+    <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    <link media="all" rel="stylesheet" type="text/css" href="/static/styles/index/index_style.css" th:href="@{/styles/index/index_style.css}"/>
+
+    <title>Профиль</title>
+</head>
+<body>
+<header>
+    <nav class="nav navbar-expand-md navbar-light bg-light sticky-top">
+        <div class="container-fluid">
+            <img class="navbar-brand" src="/static/images/MVD_Komi_Logo.png" th:src="@{/images/MVD_Komi_Logo.png}" alt="MVD_Komi_Logo">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <h1>Геоинформационная система МВД РК Коми "название"</h1>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <form th:action="@{/}" href="/index.html" method="get" class="form-main">
+                        <input type="submit" value="Главная"/>
+                    </form>
+                </li>
+                <li class="nav-item">
+                    <!--                    <a href="/about" class="nav-link">Помощь</a>-->
+                    <form th:action="@{/about}" method="get" class="form-main">
+                        <input type="submit" value="Помощь"/>
+                    </form>
+                </li>
+                <li class="nav-item active">
+                    <form th:action="@{/profile}" method="get" class="form-main-active">
+                        <input type="submit" value="Профиль"/>
+                    </form>
+                </li>
+                <li class="nav-item">
+                    <form th:action="@{/logout}" method="post" class="form-main">
+                        <input class="logout" type="submit" value="Выйти"/>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<main>
+    <section>
+        <h3>Информация</h3>
+        <div class="form-group">
+            <label for="second_name">
+                <input class="form-control sname_input" type="text" id="second_name" disabled>
+            </label>
+            <i class="fa fa-edit" aria-hidden="true" onclick="toggleDisabled(document.getElementById('second_name'))"></i>
+        </div>
+        <div class="form-group">
+            <label for="first_name">
+                <input class="form-control" type="text" id="first_name" disabled>
+            </label>
+            <i class="fa fa-edit" aria-hidden="true" onclick="toggleDisabled(document.getElementById('first_name'))"></i>
+        </div>
+        <div class="form-group">
+            <label for="middle_name">
+                <input class="form-control" type="text" placeholder="Отчество" disabled id="middle_name">
+            </label>
+            <i class="fa fa-edit" aria-hidden="true" onclick="toggleDisabled(document.getElementById('middle_name'))"></i>
+        </div>
+        <div class="form-group">
+            <label for="login">
+                <input class="form-control" type="text" placeholder="Логин (как в ИСОД)" disabled id="login">
+            </label>
+        </div>
+        <div class="form-group">
+            <label for="email">
+                <input class="form-control" type="email" placeholder="E-Mail" disabled pattern="^([a-zA-Z0-9_\-\.]+)@[m][v][d][.][r][u]" title="login@mvd.ru" id="email">
+            </label>
+            <i class="fa fa-edit" aria-hidden="true" onclick="toggleDisabled(document.getElementById('email'))"></i>
+        </div>
+        <div class="form-group">
+            <label class="form-control">Район</label>
+        </div>
+        <div class="form-group">
+            <label>
+                <input class="form-control" type="password" placeholder="Пароль" required minlength="6" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" title="Должно содержать по крайней мере одно число, одну заглавную и строчную буквы, а также не менее 6 символов">
+            </label>
+        </div>
+        <div class="form-group">
+            <label>
+                <input class="form-control" type="password" placeholder="Подтвердите пароль" required>
+            </label>
+            <button type="button" data-target="#edit" data-toggle="collapse" inputmode="enabled"></button>
+        </div>
+    </section>
+</main>
+</body>
+</html>

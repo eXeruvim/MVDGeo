@@ -1,10 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <link media="all" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <link media="all" rel="stylesheet" type="text/css" href="/static/styles/index/index_style.css" th:href="@{/styles/index/index_style.css}"/>
+
+    <title>Главная страница</title>
 </head>
 <body>
-    <h1>Hello, ̶W̶o̶r̶l̶d̶ MVD!</h1>
+<header>
+    <nav class="nav navbar-expand-md navbar-light bg-light sticky-top">
+        <div class="container-fluid">
+            <img class="navbar-brand" src="/static/images/MVD_Komi_Logo.png" th:src="@{/images/MVD_Komi_Logo.png}" alt="MVD_Komi_Logo">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <h1>Геоинформационная система МВД РК Коми "название"</h1>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <form th:action="@{/}" method="get" class="form-main-active">
+                        <input type="submit" value="Главная"/>
+                    </form>
+                </li>
+                <li class="nav-item">
+<!--                    <a href="/about" class="nav-link">Помощь</a>-->
+                    <form th:action="@{/about}" method="get" class="form-main">
+                        <input type="submit" value="Помощь"/>
+                    </form>
+                </li>
+                <li class="nav-item" >
+                    <form th:action="@{/profile}" href="/profile/profile.html" method="get" class="form-main">
+                        <input type="submit" value="Профиль"/>
+                    </form>
+                </li>
+                <li class="nav-item">
+                    <form th:action="@{/logout}" method="post" class="form-main">
+                        <input class="logout" type="submit" value="Выйти"/>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<main>
+    <section>
+
+    </section>
+</main>
 </body>
 </html>
