@@ -6,9 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
     <link media="all" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
+    <link media="all" rel="stylesheet" type="text/css" href="/static/styles/map/map_style.css" th:href="@{/styles/map/map_style.css}"/>
     <link media="all" rel="stylesheet" type="text/css" href="/static/styles/index/index_style.css" th:href="@{/styles/index/index_style.css}"/>
 
     <title>Главная страница</title>
@@ -52,8 +50,14 @@
 </header>
 <main>
     <section>
+        <div id="map" class="map">
+            <script src="/static/js/map/map.js"></script>
+        </div>
 
     </section>
 </main>
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://openlayers.org/en/v6.15.1/build/ol.js"></script>
 </html>
