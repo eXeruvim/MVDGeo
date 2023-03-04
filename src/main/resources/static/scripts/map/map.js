@@ -37,6 +37,6 @@ function init(){
         title: 'Республика Коми',
     })
 
-    map.addLayer(KomiGeoJSON);
+    // map.addLayer(KomiGeoJSON);
 }
 

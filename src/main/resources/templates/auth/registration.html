@@ -17,31 +17,33 @@
             <div class="col-lg-12 align-justify-center pr-4 pl-0 contact-form" width=>
                 <div class="">
                     <h2 class="mb-3 font-weight-light">Регистрация</h2>
-                    <form class="mt-3">
+                    <form class="mt-3" name="registration" th:action="@{/registration}" th:object="${user}" method="post">
+                        <div th:if="${param.success}" class="alert alert-success">Вы успешно зарегистрировались!</div>
+                        <div th:if="${param.error}" class="alert alert-danger">Не удалось зарегистрироваться.</div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <input class="form-control" type="text" placeholder="Фамилия" required>
+                                    <input class="form-control" type="text" placeholder="Фамилия" required th:field="*{fam}">
                                 </div>
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <input class="form-control" type="text" placeholder="Имя" required>
+                                    <input class="form-control" type="text" placeholder="Имя" required th:field="*{imj}">
                                 </div>
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <input class="form-control" type="text" placeholder="Отчество" required>
+                                    <input class="form-control" type="text" placeholder="Отчество" required th:field="*{otch}">
                                 </div>
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <input class="form-control" type="text" placeholder="Логин (как в ИСОД)" required>
+                                    <input class="form-control" type="text" placeholder="Логин (как в ИСОД)" required th:field="*{login}">
                                 </div>
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <input class="form-control" type="email" placeholder="E-Mail" required pattern="^([a-zA-Z0-9_\-\.]+)@[m][v][d][.][r][u]" title="login@mvd.ru">
+                                    <input class="form-control" type="email" placeholder="E-Mail" required pattern="^([a-zA-Z0-9_\-\.]+)@[m][v][d][.][r][u]" title="login@mvd.ru" th:field="*{email}">
                                 </div>
                             </div>
                             <div class="col-lg-6">
@@ -60,7 +62,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <input class="form-control" type="password" placeholder="Пароль" required minlength="6" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" title="Должно содержать по крайней мере одно число, одну заглавную и строчную буквы, а также не менее 6 символов">
+                                    <input class="form-control" type="password" placeholder="Пароль" required minlength="6" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" title="Должно содержать по крайней мере одно число, одну заглавную и строчную буквы, а также не менее 6 символов" th:field="*{password}">
                                 </div>
                             </div>
                             <div class="col-lg-6">

@@ -8,15 +8,15 @@
     <link media="all" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="/static/js/buttons.js" th:href="@{/js/buttons.js}"></script>
     <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    <link media="all" rel="stylesheet" type="text/css" href="/static/styles/profile/profile_style.css" th:href="@{/styles/profile/profile_style.css}"/>
     <link media="all" rel="stylesheet" type="text/css" href="/static/styles/index/index_style.css" th:href="@{/styles/index/index_style.css}"/>
 
     <title>Профиль</title>
 </head>
 <body>
 <header>
-    <nav class="nav navbar-expand-md navbar-light bg-light sticky-top">
+    <nav class="nav navbar-expand-md sticky-top">
         <div class="container-fluid">
             <img class="navbar-brand" src="/static/images/MVD_Komi_Logo.png" th:src="@{/images/MVD_Komi_Logo.png}" alt="MVD_Komi_Logo">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
@@ -52,51 +52,97 @@
     </nav>
 </header>
 <main>
+    <script src="/static/scripts/buttons.js" th:src="@{/scripts/buttons.js}"></script>
     <section>
-        <h3>Информация</h3>
-        <div class="form-group">
-            <label for="second_name">
-                <input class="form-control sname_input" type="text" id="second_name" disabled>
-            </label>
-            <i class="fa fa-edit" aria-hidden="true" onclick="toggleDisabled(document.getElementById('second_name'))"></i>
+        <div class="left-bar">
+            <h3 style="color: white">Настройки</h3>
+            <div class="left-nav">
+                <a href="#" class="link">Профиль</a>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="first_name">
-                <input class="form-control" type="text" id="first_name" disabled>
-            </label>
-            <i class="fa fa-edit" aria-hidden="true" onclick="toggleDisabled(document.getElementById('first_name'))"></i>
-        </div>
-        <div class="form-group">
-            <label for="middle_name">
-                <input class="form-control" type="text" placeholder="Отчество" disabled id="middle_name">
-            </label>
-            <i class="fa fa-edit" aria-hidden="true" onclick="toggleDisabled(document.getElementById('middle_name'))"></i>
-        </div>
-        <div class="form-group">
-            <label for="login">
-                <input class="form-control" type="text" placeholder="Логин (как в ИСОД)" disabled id="login">
-            </label>
-        </div>
-        <div class="form-group">
-            <label for="email">
-                <input class="form-control" type="email" placeholder="E-Mail" disabled pattern="^([a-zA-Z0-9_\-\.]+)@[m][v][d][.][r][u]" title="login@mvd.ru" id="email">
-            </label>
-            <i class="fa fa-edit" aria-hidden="true" onclick="toggleDisabled(document.getElementById('email'))"></i>
-        </div>
-        <div class="form-group">
-            <label class="form-control">Район</label>
-        </div>
-        <div class="form-group">
-            <label>
-                <input class="form-control" type="password" placeholder="Пароль" required minlength="6" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" title="Должно содержать по крайней мере одно число, одну заглавную и строчную буквы, а также не менее 6 символов">
-            </label>
-        </div>
-        <div class="form-group">
-            <label>
-                <input class="form-control" type="password" placeholder="Подтвердите пароль" required>
-            </label>
-            <button type="button" data-target="#edit" data-toggle="collapse" inputmode="enabled"></button>
-        </div>
+    </section>
+    <section>
+            <div class="info">
+                <div class="personal">
+                    <div class="user">
+                        <img src="/static/images/user.png" th:src="@{/images/user.png}" alt=""/>
+                        <p th:text="${username}"></p>
+                        <p th:text="${role}"></p>
+                    </div>
+                    <div class="block-1">
+                        <div class="info_input">
+                            <label for="second_name"> Фамилия
+                                <input type="text" id="second_name" required disabled th:value="${second_name}">
+                            </label>
+                        </div>
+                        <div class="info_input">
+                            <label for="first_name"> Имя
+                                <input type="text" id="first_name" disabled th:value="${first_name}">
+                            </label>
+                        </div>
+                        <div class="info_input">
+                            <label for="middle_name"> Отчество
+                                <input type="text" disabled id="middle_name" th:value="${middle_name}">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="block-2">
+                        <div class="info_input">
+                            <label for="email"> E-mail
+                                <input type="email" disabled
+                                       pattern="^([a-zA-Z0-9_\-\.]+)@[m][v][d][.][r][u]" title="login@mvd.ru" id="email" th:value="${email}">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="block-3">
+                        <div class="info_input">
+                            <label>Район</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pwd-form">
+                    <div class="pwd">
+                        <div>
+                            <h4>Сменить пароль</h4>
+                            <h6>Текущий пароль</h6>
+                            <div class="password">
+                                <input id = "pwd1" class="pwd_input" type="password" placeholder="Введите пароль" name="password">
+                                <a href="#" class="password-control" onclick="toggleType('#pwd1')"></a>
+                            </div>
+                            <h6>Новый пароль</h6>
+                            <div class="password">
+                                <input id="pwd2" class="pwd_input" type="password" placeholder="Введите пароль" name="password" oninput="validate(this)" maxlength="18">
+                                <a href="#" class="password-control" onclick="toggleType('#pwd2')"></a>
+                            </div>
+                        </div>
+                        <div class="validation">
+                            <h5>Пароль должен соответствовать требованиям: </h5>
+                            <p id="pv1" style="color: red">Присутствует хотя бы одна цифра.</p>
+                            <p id="pv2" style="color: red">Присутствует хотя бы один специальный символ (! # $ % & ?).</p>
+                            <p id="pv3" style="color: red">Латинские буквы.</p>
+                            <p id="pv4" style="color: red">Присутствуют заглавные буквы.</p>
+                            <p id="pv5" style="color: red">Отсутствует пустой символ (пробел).</p>
+                            <p id="pv6" style="color: red">Длина пароля должна быть не менее 6 и не более 18 символов.</p>
+                        </div>
+                    </div>
+                    <div>
+                        <button type="submit" class="save-pwd">Сохранить</button>
+                    </div>
+                </div>
+
+                <div class="edit_buttons">
+                    <button class="edit-button" onclick="toggleDisabled()">
+                        Редактировать информацию
+                    </button>
+                    <button class="save-button" type="submit" style="display: none;">
+                        Сохранить
+                    </button>
+                    <button class="cancel-button" type="reset" style="display: none;" onclick="toggleDisabled()" >
+                        Отменить
+                    </button>
+                </div>
+            </div>
     </section>
 </main>
 </body>
