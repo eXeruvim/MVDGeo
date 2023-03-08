@@ -1,6 +1,5 @@
 .container-fluid {
     display: flex;
-    width: auto;
 }
 
 .navbar-nav li{
@@ -46,8 +45,8 @@
     color: gray;
 }
 
-input{
-    font-size: 1.1em !important;
+.collapse.navbar-collapse input{
+    font-size: 1.2em !important;
     height: auto;
     padding: 8px 0;
 }

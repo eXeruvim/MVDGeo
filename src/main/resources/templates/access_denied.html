@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Доступ запрещен</title>
+    <link media="all" rel="stylesheet" type="text/css" href="/static/styles/errors.css" th:href="@{/styles/errors.css}"/>
+</head>
+<body>
+<h2>К сожалению, у Вас нет прав для просмотра этой страницы.</h2>
+<p>
+   <a href="/" th:href="@{/}">Нажмите, чтобы вернуться на главную.</a>
+</p>
+</body>
+</html>

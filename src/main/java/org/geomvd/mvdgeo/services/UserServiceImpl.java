@@ -1,5 +1,6 @@
 package org.geomvd.mvdgeo.services;
 
+import org.geomvd.mvdgeo.models.Role;
 import org.geomvd.mvdgeo.models.User;
 import org.geomvd.mvdgeo.repositories.RoleRepository;
 import org.geomvd.mvdgeo.repositories.UserRepository;
@@ -28,6 +29,7 @@ public class UserServiceImpl implements UserService {
         if (findUserByLogin(registration.getLogin()) != null){
             throw new IllegalArgumentException();
         } else {
+            //registration.setRoles(List.of(new Role("User", registration.getNsyst())));
             userRepository.save(registration);
             return registration;
         }

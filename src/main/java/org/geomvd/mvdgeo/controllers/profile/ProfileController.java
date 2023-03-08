@@ -21,13 +21,8 @@ public class ProfileController {
     public String getProfile(Model model){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByEmail(auth.getName());
-        model.addAttribute("username", user.getLogin());
-        // TODO: Заменить
         model.addAttribute("role", "Роль: " +  String.valueOf(auth.getAuthorities()).replaceAll("\\[", "").replaceAll("]", ""));
-        model.addAttribute("second_name", user.getFam());
-        model.addAttribute("first_name", user.getImj());
-        model.addAttribute("middle_name", user.getOtch());
-        model.addAttribute("email", user.getEmail());
+        model.addAttribute("user", user);
         return "profile/profile";
     }
 

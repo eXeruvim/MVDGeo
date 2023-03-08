@@ -16,7 +16,7 @@ public class Role
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column (name = "ur_id")
-    private Long nsyst;
+    private long nsyst;
 
     @Column(nullable=false, unique=true, name = "name")
     private String name;

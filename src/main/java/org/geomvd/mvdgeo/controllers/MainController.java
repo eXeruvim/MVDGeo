@@ -8,6 +8,7 @@ public class MainController {
 
     @GetMapping(value = {"/", "/index"})
     public String getHome(){
+
         return "index";
     }
 

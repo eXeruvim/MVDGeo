@@ -15,6 +15,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.access.AccessDeniedHandler;
 
 @Configuration
 @EnableWebSecurity
@@ -35,7 +36,8 @@ public class WebSecurityConfig {
         http
                 .authorizeHttpRequests()
                 .requestMatchers("/styles/**", "/images/**", "/scripts/**", "/registration/**").permitAll()
-                .anyRequest().authenticated()
+                .requestMatchers("/admin/**").hasAuthority("Admin");
+        http.authorizeHttpRequests().anyRequest().authenticated()
             .and()
                 .authenticationProvider(authenticationProvider());
         http
@@ -44,6 +46,7 @@ public class WebSecurityConfig {
 //                .usernameParameter("user")
 //                .passwordParameter("pass")
                 .logout(logout -> logout.logoutUrl("/logout").logoutSuccessUrl("/login?logout").permitAll());
+        http.exceptionHandling().accessDeniedPage("/access_denied");
         return http.build();
     }
     public static boolean isAuthenticated() {
@@ -54,6 +57,7 @@ public class WebSecurityConfig {
         }
         return authentication.isAuthenticated();
     }
+
 
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authConfig) throws Exception {

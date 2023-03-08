@@ -19,24 +19,24 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <h1>Геоинформационная система МВД РК Коми "название"</h1>
+            <h1 class="hat">Геоинформационная система МВД РК Коми "название"</h1>
         </div>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
                     <form th:action="@{/}" method="get" class="form-main-active">
-                        <input type="submit" value="Главная"/>
+                        <input class="btn-input" type="submit" value="Главная"/>
                     </form>
                 </li>
                 <li class="nav-item">
 <!--                    <a href="/about" class="nav-link">Помощь</a>-->
                     <form th:action="@{/about}" method="get" class="form-main">
-                        <input type="submit" value="Помощь"/>
+                        <input class="btn-input" type="submit" value="Помощь" />
                     </form>
                 </li>
                 <li class="nav-item" >
-                    <form th:action="@{/profile}" href="/profile/profile.html" method="get" class="form-main">
-                        <input type="submit" value="Профиль"/>
+                    <form th:action="@{/profile}" href="/static/templates/profile/profile.html" method="get" class="form-main">
+                        <input class="btn-input" type="submit" value="Профиль"/>
                     </form>
                 </li>
                 <li class="nav-item">
@@ -51,7 +51,7 @@
 <main>
     <section>
         <div id="map" class="map">
-            <script src="/scripts/map/map.js" th:src="@{scripts}"></script>
+            <script src="/static/scripts/map/map.js" th:src="@{/scripts/map/map.js}"></script>
         </div>
     </section>
 </main>

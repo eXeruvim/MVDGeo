@@ -6,11 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
     <link media="all" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    <link media="all" rel="stylesheet" type="text/css" href="/static/styles/profile/profile_style_1.css" th:href="@{/styles/profile/profile_style_1.css}"/>
     <link media="all" rel="stylesheet" type="text/css" href="/static/styles/profile/profile_style.css" th:href="@{/styles/profile/profile_style.css}"/>
-    <link media="all" rel="stylesheet" type="text/css" href="/static/styles/index/index_style.css" th:href="@{/styles/index/index_style.css}"/>
+    <link media="all" rel="stylesheet" type="text/css" href="/static/styles/header.css" th:href="@{/styles/header.css}"/>
+
 
     <title>Профиль</title>
 </head>
@@ -18,132 +17,220 @@
 <header>
     <nav class="nav navbar-expand-md sticky-top">
         <div class="container-fluid">
-            <img class="navbar-brand" src="/static/images/MVD_Komi_Logo.png" th:src="@{/images/MVD_Komi_Logo.png}" alt="MVD_Komi_Logo">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <h1>Геоинформационная система МВД РК Коми "название"</h1>
-        </div>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <form th:action="@{/}" href="/index.html" method="get" class="form-main">
-                        <input type="submit" value="Главная"/>
-                    </form>
-                </li>
-                <li class="nav-item">
-                    <!--                    <a href="/about" class="nav-link">Помощь</a>-->
-                    <form th:action="@{/about}" method="get" class="form-main">
-                        <input type="submit" value="Помощь"/>
-                    </form>
-                </li>
-                <li class="nav-item active">
-                    <form th:action="@{/profile}" method="get" class="form-main-active">
-                        <input type="submit" value="Профиль"/>
-                    </form>
-                </li>
-                <li class="nav-item">
-                    <form th:action="@{/logout}" method="post" class="form-main">
-                        <input class="logout" type="submit" value="Выйти"/>
-                    </form>
-                </li>
-            </ul>
+            <div class="row">
+                <img class="navbar-brand" src="/static/images/MVD_Komi_Logo.png" th:src="@{/images/MVD_Komi_Logo.png}" alt="MVD_Komi_Logo">
+                <h1 class="hat" style="margin: auto">Геоинформационная система МВД РК Коми</h1>
+            </div>
         </div>
     </nav>
 </header>
 <main>
-    <script src="/static/scripts/buttons.js" th:src="@{/scripts/buttons.js}"></script>
     <section>
-        <div class="left-bar">
-            <h3 style="color: white">Настройки</h3>
-            <div class="left-nav">
-                <a href="#" class="link">Профиль</a>
+        <div class="wrapper">
+            <!-- Sidebar  -->
+            <nav id="sidebar">
+                <div class="sidebar-header">
+                    <button type="button" id="sidebarCollapse" class="navbar-btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+
+                <ul class="list-unstyled components">
+                    <li>
+                        <form th:action="@{/}" href="/index.html" method="get" class="form-main">
+                            <a>
+                                <i class="fas fa-home"></i>
+                                <button class="home-btn" type="submit">Главная</button>
+                            </a>
+                        </form>
+                    </li>
+                    <li class="active">
+                        <form th:action="@{/profile}" method="get" class="form-main-active">
+                            <a href="#">
+                                <i class="fas fa-user"></i>
+                                <button type="submit">Профиль</button>
+                            </a>
+                        </form>
+                    </li>
+                    <li>
+                        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                            <i class="fas fa-copy"></i>
+                            Админ
+                        </a>
+                        <ul class="collapse list-unstyled" id="pageSubmenu">
+                            <li>
+                                <form th:action="@{/admin}" method="get" class="form-main">
+                                    <a href="admin/admin.html" th:href="@{/admin}" class="link" type="submit">Админ.панель</a>
+                                </form>
+                            </li>
+                            <li>
+                                <a href="#">Page 2</a>
+                            </li>
+                            <li>
+                                <a href="#">Page 3</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <form th:action="@{/about}" method="get" class="form-main">
+                            <a href="#">
+                                <i class="fas fa-question"></i>
+                                <button type="submit">Помощь</button>
+                            </a>
+                        </form>
+
+                    </li>
+                </ul>
+
+                <ul class="list-unstyled CTAs">
+                    <li>
+                        <form th:action="@{/logout}" method="post" class="form-main">
+                            <div>
+                                <a class="logout-btn">
+                                    <button type="submit">Выход</button>
+                                </a>
+                            </div>
+                        </form>
+
+                    </li>
+
+                </ul>
+            </nav>
+
+            <!-- Page Content  -->
+            <div id="content">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <div class="container-fluid">
+                        <div class="fio-container">
+                            <img class="user-img" src="/static/images/user.png" th:src="@{/images/user.png}" alt=""/>
+                            <h2 class="fio"  th:text="${user.getFam() + user.getImj() + user.getOtch() + '(' + user.getLogin() + ')'}">Че Гевара Бражников</h2>
+                            <i class="fas fa-edit" title="Редактировать"></i>
+                        </div>
+                        <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <i class="fas fa-align-justify"></i>
+                        </button>
+
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                            <ul class="nav navbar-nav ml-auto">
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="#">Page</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Page</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Page</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Page</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <div class="info">
+                    <div class="personal">
+                            <div class="container-fluid">
+                                <div class="d-flex flex-column align-items-lg-start bd-highlight mb-3">
+                                    <div class="p-2 bd-highlight">
+                                        <p class="text-center" th:text="${role}">Роль</p>
+                                    </div>
+                                    <div class="p-2 bd-highlight">
+                                        <div>
+                                            <label>E-mail:</label>
+                                            <p style="display: inline-block" th:text="${user.getEmail()}"></p>
+                                        </div>
+                                    </div>
+                                    <div class="p-2 bd-highlight">
+                                        <label>Район</label>
+                                        <select disabled class="form-control">
+                                            <optgroup label="Республика Коми">
+                                                <option value="k1">Сыктывкар</option>
+                                            </optgroup>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+<!--                        <div class="edit_buttons">-->
+<!--                            <button class="edit-button" onclick="toggleDisabled()">-->
+<!--                                Редактировать информацию-->
+<!--                            </button>-->
+<!--                            <button class="save-button" type="submit" style="display: none;">-->
+<!--                                Сохранить-->
+<!--                            </button>-->
+<!--                            <button class="cancel-button" type="reset" style="display: none;" onclick="toggleDisabled()" >-->
+<!--                                Отменить-->
+<!--                            </button>-->
+<!--                        </div>-->
+                    </div>
+                </div>
+                <div class="line"></div>
+
+                <div class="pwd">
+                    <h2>Изменить пароль</h2>
+                    <ul>
+                        <li>
+                            <div class="container-fluid">
+                                <div class="d-flex justify-content-around">
+                                    <div class="p-2 bd-highlight">
+                                        <h6>Текущий пароль</h6>
+                                        <div class="password">
+                                            <input id = "pwd1" class="pwd_input" type="password" placeholder="Введите пароль" name="password">
+                                            <a href="#" class="password-control" onclick="toggleType('#pwd1')"></a>
+                                        </div>
+                                        <h6>Новый пароль</h6>
+                                        <div class="password">
+                                            <input id="pwd2" class="pwd_input" type="password" placeholder="Введите пароль" name="password" oninput="validate(this)" maxlength="18">
+                                            <a href="#" class="password-control" onclick="toggleType('#pwd2')"></a>
+                                        </div>
+                                    </div>
+                                    <div class="req p-2 bd-highlight">
+                                        <h5>Пароль должен соответствовать требованиям: </h5>
+                                        <p id="pv1" style="color: red">Присутствует хотя бы одна цифра.</p>
+                                        <p id="pv2" style="color: red">Присутствует хотя бы один специальный символ (! # $ % & ?).</p>
+                                        <p id="pv3" style="color: red">Латинские буквы.</p>
+                                        <p id="pv4" style="color: red">Присутствуют заглавные буквы.</p>
+                                        <p id="pv5" style="color: red">Отсутствует пустой символ (пробел).</p>
+                                        <p id="pv6" style="color: red">Длина пароля должна быть не менее 6 и не более 18 символов.</p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <button type="submit" class="save-pwd">Сохранить</button>
+                                </div>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+
+
+<!--                <div class="line"></div>-->
+
+<!--                <h2>Lorem Ipsum Dolor</h2>-->
+<!--                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>-->
+
+<!--                <div class="line"></div>-->
+
+<!--                <h3>Lorem Ipsum Dolor</h3>-->
+<!--                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>-->
             </div>
         </div>
     </section>
-    <section>
-            <div class="info">
-                <div class="personal">
-                    <div class="user">
-                        <img src="/static/images/user.png" th:src="@{/images/user.png}" alt=""/>
-                        <p th:text="${username}"></p>
-                        <p th:text="${role}"></p>
-                    </div>
-                    <div class="block-1">
-                        <div class="info_input">
-                            <label for="second_name"> Фамилия
-                                <input type="text" id="second_name" required disabled th:value="${second_name}">
-                            </label>
-                        </div>
-                        <div class="info_input">
-                            <label for="first_name"> Имя
-                                <input type="text" id="first_name" disabled th:value="${first_name}">
-                            </label>
-                        </div>
-                        <div class="info_input">
-                            <label for="middle_name"> Отчество
-                                <input type="text" disabled id="middle_name" th:value="${middle_name}">
-                            </label>
-                        </div>
-                    </div>
-                    <div class="block-2">
-                        <div class="info_input">
-                            <label for="email"> E-mail
-                                <input type="email" disabled
-                                       pattern="^([a-zA-Z0-9_\-\.]+)@[m][v][d][.][r][u]" title="login@mvd.ru" id="email" th:value="${email}">
-                            </label>
-                        </div>
-                    </div>
-                    <div class="block-3">
-                        <div class="info_input">
-                            <label>Район</label>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="pwd-form">
-                    <div class="pwd">
-                        <div>
-                            <h4>Сменить пароль</h4>
-                            <h6>Текущий пароль</h6>
-                            <div class="password">
-                                <input id = "pwd1" class="pwd_input" type="password" placeholder="Введите пароль" name="password">
-                                <a href="#" class="password-control" onclick="toggleType('#pwd1')"></a>
-                            </div>
-                            <h6>Новый пароль</h6>
-                            <div class="password">
-                                <input id="pwd2" class="pwd_input" type="password" placeholder="Введите пароль" name="password" oninput="validate(this)" maxlength="18">
-                                <a href="#" class="password-control" onclick="toggleType('#pwd2')"></a>
-                            </div>
-                        </div>
-                        <div class="validation">
-                            <h5>Пароль должен соответствовать требованиям: </h5>
-                            <p id="pv1" style="color: red">Присутствует хотя бы одна цифра.</p>
-                            <p id="pv2" style="color: red">Присутствует хотя бы один специальный символ (! # $ % & ?).</p>
-                            <p id="pv3" style="color: red">Латинские буквы.</p>
-                            <p id="pv4" style="color: red">Присутствуют заглавные буквы.</p>
-                            <p id="pv5" style="color: red">Отсутствует пустой символ (пробел).</p>
-                            <p id="pv6" style="color: red">Длина пароля должна быть не менее 6 и не более 18 символов.</p>
-                        </div>
-                    </div>
-                    <div>
-                        <button type="submit" class="save-pwd">Сохранить</button>
-                    </div>
-                </div>
-
-                <div class="edit_buttons">
-                    <button class="edit-button" onclick="toggleDisabled()">
-                        Редактировать информацию
-                    </button>
-                    <button class="save-button" type="submit" style="display: none;">
-                        Сохранить
-                    </button>
-                    <button class="cancel-button" type="reset" style="display: none;" onclick="toggleDisabled()" >
-                        Отменить
-                    </button>
-                </div>
-            </div>
-    </section>
 </main>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#sidebarCollapse').on('click', function () {
+            $('#sidebar').toggleClass('active');
+            $(this).toggleClass('active');
+        });
+    });
+</script>
 </body>
 </html>

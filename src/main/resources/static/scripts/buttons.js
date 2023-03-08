@@ -38,7 +38,6 @@ function toggleType(id) {
 
 
 function validate(e){
-   console.log(e.value);
    let p = document.querySelector('#pv1');
    if (!(/[0-9]/.test(e.value))) p.style.color = 'red';
    else p.style.color = 'green';
