@@ -29,7 +29,7 @@ public class UserServiceImpl implements UserService {
         if (findUserByLogin(registration.getLogin()) != null){
             throw new IllegalArgumentException();
         } else {
-            //registration.setRoles(List.of(new Role("User", registration.getNsyst())));
+            registration.setRoles(List.of(new Role("User")));
             userRepository.save(registration);
             return registration;
         }

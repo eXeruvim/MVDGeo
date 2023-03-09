@@ -30,3 +30,58 @@
 .req{
     flex-direction: column;
 }
+
+
+/*Область пароля*/
+.password {
+    position: relative;
+}
+#pwd1, #pwd2  {
+    padding: 5px 0;
+    height: 50px;
+    line-height: 40px;
+    text-indent: 10px;
+    margin: 0 0 15px 0;
+    border-radius: 5px;
+    border: 1px solid #999;
+    font-size: 18px;
+}
+.password-control {
+    position: absolute;
+    top: 15px;
+    right: 6px;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: url(https://snipp.ru/demo/495/view.svg) 0 0 no-repeat;
+}
+.password-control.view {
+    background: url(https://snipp.ru/demo/495/no-view.svg) 0 0 no-repeat;
+}
+
+.validation{
+    padding: 10px;
+    margin-left: 50px;
+    border: black 1px solid;
+}
+
+.pwd{
+    display: flex;
+    flex-direction: row;
+}
+
+.pwd-form{
+    margin-top: 20px;
+    padding: 10px 15px;
+    background: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.save-pwd{
+    width: 10%;
+    text-align: center;
+    float: left;
+}
+
+/*Область пароля*/

@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
     <link media="all" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
-    <link media="all" rel="stylesheet" type="text/css" href="/static/styles/profile/profile_style_1.css" th:href="@{/styles/profile/profile_style_1.css}"/>
     <link media="all" rel="stylesheet" type="text/css" href="/static/styles/profile/profile_style.css" th:href="@{/styles/profile/profile_style.css}"/>
+    <link media="all" rel="stylesheet" type="text/css" href="/static/styles/profile/dashboard.css" th:href="@{/styles/profile/dashboard.css}"/>
     <link media="all" rel="stylesheet" type="text/css" href="/static/styles/header.css" th:href="@{/styles/header.css}"/>
 
 
@@ -170,43 +170,35 @@
                 </div>
                 <div class="line"></div>
 
-                <div class="pwd">
-                    <h2>Изменить пароль</h2>
-                    <ul>
-                        <li>
-                            <div class="container-fluid">
-                                <div class="d-flex justify-content-around">
-                                    <div class="p-2 bd-highlight">
-                                        <h6>Текущий пароль</h6>
-                                        <div class="password">
-                                            <input id = "pwd1" class="pwd_input" type="password" placeholder="Введите пароль" name="password">
-                                            <a href="#" class="password-control" onclick="toggleType('#pwd1')"></a>
-                                        </div>
-                                        <h6>Новый пароль</h6>
-                                        <div class="password">
-                                            <input id="pwd2" class="pwd_input" type="password" placeholder="Введите пароль" name="password" oninput="validate(this)" maxlength="18">
-                                            <a href="#" class="password-control" onclick="toggleType('#pwd2')"></a>
-                                        </div>
-                                    </div>
-                                    <div class="req p-2 bd-highlight">
-                                        <h5>Пароль должен соответствовать требованиям: </h5>
-                                        <p id="pv1" style="color: red">Присутствует хотя бы одна цифра.</p>
-                                        <p id="pv2" style="color: red">Присутствует хотя бы один специальный символ (! # $ % & ?).</p>
-                                        <p id="pv3" style="color: red">Латинские буквы.</p>
-                                        <p id="pv4" style="color: red">Присутствуют заглавные буквы.</p>
-                                        <p id="pv5" style="color: red">Отсутствует пустой символ (пробел).</p>
-                                        <p id="pv6" style="color: red">Длина пароля должна быть не менее 6 и не более 18 символов.</p>
-                                    </div>
-                                </div>
-                                <div>
-                                    <button type="submit" class="save-pwd">Сохранить</button>
-                                </div>
+                <div class="pwd-form">
+                    <div class="pwd">
+                        <div>
+                            <h4>Сменить пароль</h4>
+                            <h6>Текущий пароль</h6>
+                            <div class="password">
+                                <input type="password" id="pwd1" placeholder="Введите пароль" name="password" class="pwd1">
+                                <a href="#" class="password-control" onclick="return toggleType(this, '#pwd1');"></a>
                             </div>
-                        </li>
-
-                    </ul>
+                            <h6>Новый пароль</h6>
+                            <div class="password">
+                                <input type="password" id="pwd2" placeholder="Введите пароль" name="password" oninput="validate(this)" class="pwd2">
+                                <a href="#" class="password-control" onclick="return toggleType(this, '#pwd2');"></a>
+                            </div>
+                        </div>
+                        <div class="validation">
+                            <h5>Пароль должен соответствовать требованиям: </h5>
+                            <p id="pv1" style="color: red">Присутствует хотя бы одна цифра.</p>
+                            <p id="pv2" style="color: red">Присутствует хотя бы один специальный символ (! # $ % & ?).</p>
+                            <p id="pv3" style="color: red">Присутствуют строчные латинские буквы.</p>
+                            <p id="pv4" style="color: red">Присутствуют заглавные латинские буквы.</p>
+                            <p id="pv5" style="color: red">Отсутствует пустой символ (пробел).</p>
+                            <p id="pv6" style="color: red">Длина пароля должна быть не менее 6 и не более 18 символов.</p>
+                        </div>
+                    </div>
+                    <div>
+                        <button type="submit" class="save-pwd">Сохранить</button>
+                    </div>
                 </div>
-
 
 <!--                <div class="line"></div>-->
 
@@ -232,5 +224,6 @@
         });
     });
 </script>
+<script src="/static/scripts/buttons.js" th:src="@{/scripts/buttons.js}"></script>
 </body>
 </html>

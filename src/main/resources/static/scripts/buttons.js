@@ -26,16 +26,17 @@ function toggleButtons(){
    }
 }
 
-
-function toggleType(id) {
-   let input = document.querySelector(id);
-   if (input.type === 'password') {
-      input.type = 'text';
+function toggleType(target, cls){
+   var input = document.querySelector(cls);
+   if (input.getAttribute('type') === 'password') {
+      target.classList.add('view');
+      input.setAttribute('type', 'text');
    } else {
-      input.type = 'password';
+      target.classList.remove('view');
+      input.setAttribute('type', 'password');
    }
+   return false;
 }
-
 
 function validate(e){
    let p = document.querySelector('#pv1');
