@@ -2,7 +2,6 @@ package org.geomvd.mvdgeo.controllers.auth;
 
 import org.geomvd.mvdgeo.config.WebSecurityConfig;
 import org.geomvd.mvdgeo.models.User;
-import org.geomvd.mvdgeo.repositories.UserRepository;
 import org.geomvd.mvdgeo.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -35,7 +34,7 @@ public class RegistrationController {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userService.save(user);
         System.out.println(user);
-        return "/index";
+        return "redirect:/registration?success";
 //        User exUser = userService.findUserByLogin(user.getLogin());
 //        if (exUser != null && exUser.getLogin() != null && !exUser.getLogin().isEmpty()){
 //            bindingResult.rejectValue("login", String.valueOf(400), "Пользователь зарегистрирован");

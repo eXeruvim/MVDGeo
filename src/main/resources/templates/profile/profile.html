@@ -55,14 +55,16 @@
                         </form>
                     </li>
                     <li>
-                        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <a href="#admpageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                             <i class="fas fa-copy"></i>
                             Админ
                         </a>
-                        <ul class="collapse list-unstyled" id="pageSubmenu">
+                        <ul class="collapse list-unstyled" id="admpageSubmenu">
                             <li>
-                                <form th:action="@{/admin}" method="get" class="form-main">
-                                    <a href="admin/admin.html" th:href="@{/admin}" class="link" type="submit">Админ.панель</a>
+                                <form th:action="@{/admin}" href="admin/admin.html" method="get" class="form-main">
+                                    <a href="#" class="link">
+                                        <button type="submit">Админ.панель</button>
+                                    </a>
                                 </form>
                             </li>
                             <li>
@@ -170,35 +172,51 @@
                 </div>
                 <div class="line"></div>
 
-                <div class="pwd-form">
-                    <div class="pwd">
-                        <div>
-                            <h4>Сменить пароль</h4>
-                            <h6>Текущий пароль</h6>
-                            <div class="password">
-                                <input type="password" id="pwd1" placeholder="Введите пароль" name="password" class="pwd1">
-                                <a href="#" class="password-control" onclick="return toggleType(this, '#pwd1');"></a>
+
+                <div class="pwd-form" id="pwdForm">
+                    <ul class="list-unstyled components">
+                        <li>
+                            <a href="#pwdpageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                                <h4>Сменить пароль</h4>
+                            </a>
+                            <div class="pwd">
+                                <ul class="collapse list-unstyled" id="pwdpageSubmenu">
+                                    <li>
+                                        <div class="pwd">
+                                            <div>
+                                                <h6>Текущий пароль</h6>
+                                                <div class="password">
+                                                    <input type="password" id="pwd1" placeholder="Введите пароль" name="password" class="pwd1">
+                                                    <a href="#" class="password-control" onclick="return toggleType(this, '#pwd1');"></a>
+                                                </div>
+                                                <h6>Новый пароль</h6>
+                                                <div class="password">
+                                                    <input type="password" id="pwd2" placeholder="Введите пароль" name="password" oninput="validate(this)" class="pwd2">
+                                                    <a href="#" class="password-control" onclick="return toggleType(this, '#pwd2');"></a>
+                                                </div>
+                                            </div>
+                                            <div class="validation">
+                                                <h5>Пароль должен соответствовать требованиям: </h5>
+                                                <p id="pv1" style="color: red">Присутствует хотя бы одна цифра.</p>
+                                                <p id="pv2" style="color: red">Присутствует хотя бы один специальный символ (! # $ % & ?).</p>
+                                                <p id="pv3" style="color: red">Присутствуют строчные латинские буквы.</p>
+                                                <p id="pv4" style="color: red">Присутствуют заглавные латинские буквы.</p>
+                                                <p id="pv5" style="color: red">Отсутствует пустой символ (пробел).</p>
+                                                <p id="pv6" style="color: red">Длина пароля должна быть не менее 6 и не более 18 символов.</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li >
+                                        <div>
+                                            <button type="submit" class="save-pwd">Сохранить</button>
+                                        </div>
+                                    </li>
+                                </ul>
                             </div>
-                            <h6>Новый пароль</h6>
-                            <div class="password">
-                                <input type="password" id="pwd2" placeholder="Введите пароль" name="password" oninput="validate(this)" class="pwd2">
-                                <a href="#" class="password-control" onclick="return toggleType(this, '#pwd2');"></a>
-                            </div>
-                        </div>
-                        <div class="validation">
-                            <h5>Пароль должен соответствовать требованиям: </h5>
-                            <p id="pv1" style="color: red">Присутствует хотя бы одна цифра.</p>
-                            <p id="pv2" style="color: red">Присутствует хотя бы один специальный символ (! # $ % & ?).</p>
-                            <p id="pv3" style="color: red">Присутствуют строчные латинские буквы.</p>
-                            <p id="pv4" style="color: red">Присутствуют заглавные латинские буквы.</p>
-                            <p id="pv5" style="color: red">Отсутствует пустой символ (пробел).</p>
-                            <p id="pv6" style="color: red">Длина пароля должна быть не менее 6 и не более 18 символов.</p>
-                        </div>
-                    </div>
-                    <div>
-                        <button type="submit" class="save-pwd">Сохранить</button>
-                    </div>
+                        </li>
+                    </ul>
                 </div>
+            </div>
 
 <!--                <div class="line"></div>-->
 
@@ -210,7 +228,6 @@
 <!--                <h3>Lorem Ipsum Dolor</h3>-->
 <!--                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>-->
             </div>
-        </div>
     </section>
 </main>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>

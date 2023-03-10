@@ -3,8 +3,8 @@ package org.geomvd.mvdgeo.models;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.geomvd.mvdgeo.models.consts.ERole;
 
-import java.util.List;
 @Data
 @NoArgsConstructor
 @Entity
@@ -16,10 +16,11 @@ public class Role
     @Column (name = "id_role")
     private long id_role;
 
-    @Column(nullable=false, unique=true, name = "name")
-    private String name;
+    @Enumerated(EnumType.STRING)
+    private ERole name;
 
-    public Role(String name){
+    public Role(ERole name){
         this.name = name;
     }
 }
+

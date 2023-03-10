@@ -1,7 +1,7 @@
 package org.geomvd.mvdgeo.services;
 
-import org.geomvd.mvdgeo.models.Role;
 import org.geomvd.mvdgeo.models.User;
+import org.geomvd.mvdgeo.models.consts.ERole;
 import org.geomvd.mvdgeo.repositories.RoleRepository;
 import org.geomvd.mvdgeo.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +9,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -29,7 +30,8 @@ public class UserServiceImpl implements UserService {
         if (findUserByLogin(registration.getLogin()) != null){
             throw new IllegalArgumentException();
         } else {
-            registration.setRoles(List.of(new Role("User")));
+
+            registration.setRoles(Set.of(roleRepository.findByName(ERole.USER)));
             userRepository.save(registration);
             return registration;
         }
@@ -49,4 +51,5 @@ public class UserServiceImpl implements UserService {
     public User findUserByEmail(String email) {
         return userRepository.findByEmail(email);
     }
+
 }

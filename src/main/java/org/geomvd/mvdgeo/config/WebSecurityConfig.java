@@ -15,7 +15,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.access.AccessDeniedHandler;
 
 @Configuration
 @EnableWebSecurity
@@ -36,7 +35,7 @@ public class WebSecurityConfig {
         http
                 .authorizeHttpRequests()
                 .requestMatchers("/styles/**", "/images/**", "/scripts/**", "/registration/**").permitAll()
-                .requestMatchers("/admin/**").hasAuthority("Admin");
+                .requestMatchers("/admin/**").hasAuthority("ADMIN");
         http.authorizeHttpRequests().anyRequest().authenticated()
             .and()
                 .authenticationProvider(authenticationProvider());

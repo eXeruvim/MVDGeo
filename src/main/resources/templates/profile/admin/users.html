@@ -4,13 +4,11 @@
   <meta charset="utf-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-
   <link media="all" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
   <link media="all" rel="stylesheet" type="text/css" href="/static/styles/profile/profile_style.css" th:href="@{/styles/profile/profile_style.css}"/>
   <link media="all" rel="stylesheet" type="text/css" href="/static/styles/profile/dashboard.css" th:href="@{/styles/profile/dashboard.css}"/>
   <link media="all" rel="stylesheet" type="text/css" href="/static/styles/profile/admin/admin.css" th:href="@{/styles/profile/admin/admin.css}"/>
-
-  <title>Панель администратора</title>
+  <title>Пользователи</title>
 </head>
 <body>
 <header>
@@ -60,8 +58,8 @@
             </a>
             <ul class="collapse list-unstyled" id="pageSubmenu">
               <li>
-                <form th:action="@{/admin/users}" method="get" class="form-main">
-                  <a href="users.html" th:href="@{/admin/users}" class="link" type="submit">Пользователи</a>
+                <form th:action="@{/admin}" method="get" class="form-main">
+                  <a href="admin.html" th:href="@{/admin}" class="link" type="submit">Пользователи</a>
                 </form>
               </li>
               <li>
@@ -128,7 +126,48 @@
             </div>
           </div>
         </nav>
+        <div class="info">
+          <div class="users">
+            <div class="users-list">
+              <h4>Список пользователей</h4>
+              <table>
+                <thead>
+                <tr>
+                  <th>Фамилия</th>
+                  <th>Имя</th>
+                  <th>Отчество</th>
+                  <th>Логин</th>
+                  <th>E-mail</th>
+                  <th>Роль</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="user:${users}">
+                  <!--  Мб везде сделать trim, проверить   -->
+                  <td th:text="${user.getFam().trim()}"></td>
+                  <td th:text="${user.getImj()}"></td>
+                  <td th:text="${user.getOtch()}"></td>
+                  <td th:text="${user.getLogin()}"></td>
+                  <td th:text="${user.getEmail()}"></td>
+                  <td th:text="${user.getRole()}"></td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
 
+            <!--                        <div class="edit_buttons">-->
+            <!--                            <button class="edit-button" onclick="toggleDisabled()">-->
+            <!--                                Редактировать информацию-->
+            <!--                            </button>-->
+            <!--                            <button class="save-button" type="submit" style="display: none;">-->
+            <!--                                Сохранить-->
+            <!--                            </button>-->
+            <!--                            <button class="cancel-button" type="reset" style="display: none;" onclick="toggleDisabled()" >-->
+            <!--                                Отменить-->
+            <!--                            </button>-->
+            <!--                        </div>-->
         <div class="line"></div>
 
 
@@ -144,18 +183,18 @@
       </div>
     </div>
   </section>
-</main>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-<script type="text/javascript">
-  $(document).ready(function () {
-    $('#sidebarCollapse').on('click', function () {
-      $('#sidebar').toggleClass('active');
-      $(this).toggleClass('active');
+  <script src="/static/scripts/buttons.js" th:src="@{/scripts/buttons.js}"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $('#sidebarCollapse').on('click', function () {
+        $('#sidebar').toggleClass('active');
+        $(this).toggleClass('active');
+      });
     });
-  });
-</script>
+  </script>
+</main>
 </body>
 </html>

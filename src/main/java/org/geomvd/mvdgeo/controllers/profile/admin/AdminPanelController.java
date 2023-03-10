@@ -1,13 +1,15 @@
 package org.geomvd.mvdgeo.controllers.profile.admin;
 
 import org.geomvd.mvdgeo.models.User;
+import org.geomvd.mvdgeo.repositories.RoleRepository;
 import org.geomvd.mvdgeo.services.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/admin")
@@ -15,10 +17,18 @@ public class AdminPanelController {
 
     @Autowired
     UserServiceImpl userService;
+    @Autowired
+    RoleRepository roleRepository;
+
+    @GetMapping("/users")
+    public String getUsers(Model model){
+        List<User> users = userService.findAllUsers();
+        model.addAttribute("users", users);
+        return "/profile/admin/users";
+    }
 
     @GetMapping()
-    public String getAdmin(Model model){
-        model.addAttribute("users", userService.findAllUsers());
+    public String getAdminPage(){
         return "/profile/admin/admin";
     }
 
